@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motorcycle Spare Parts Online</title>
+    <link rel="Ramya-akka.js" href="Ramya-akka.css">
+</head>
+<body>
+    <header>
+        <h1>Motorcycle Spare Parts Online</h1>
+        <nav>
+            <button onclick="showHome()">Home</button>
+            <button onclick="showCart()">Cart (<span id="cart-count">0</span>)</button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Homepage (Companies) -->
+        <section id="home" class="active">
+            <h2>Select a Bike Company</h2>
+            <div id="company-list" class="grid-container"></div>
+        </section>
+
+        <!-- Models Page -->
+        <section id="models">
+            <h2>Models</h2>
+            <button onclick="showHome()">Back to Companies</button>
+            <div id="model-list" class="grid-container"></div>
+        </section>
+
+        <!-- Components Page -->
+        <section id="components">
+            <h2>Components</h2>
+            <button onclick="showModels()">Back to Models</button>
+            <div id="component-list" class="grid-container"></div>
+        </section>
+
+        <!-- Spare Parts Page -->
+        <section id="spare-parts">
+            <h2>Spare Parts</h2>
+            <button onclick="showComponents()">Back to Components</button>
+            <div id="spare-part-list" class="grid-container"></div>
+        </section>
+
+        <!-- Cart Page -->
+        <section id="cart">
+            <h2>Your Cart</h2>
+            <button onclick="showHome()">Continue Shopping</button>
+            <div id="cart-items"></div>
+            <div id="cart-total"></div>
+            <button onclick="placeOrder()">Place Order</button>
+
+            <!-- User Verification Form (Updated with Address and Mechanic Shop) -->
+            <div id="user-verification" style="display: none;">
+                <h3>Enter Your Details</h3>
+                <form id="order-form" onsubmit="submitOrder(event)">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" required><br><br>
+
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" required><br><br>
+
+                    <label for="address">Delivery Address:</label>
+                    <textarea id="address" name="address" rows="3" required></textarea><br><br>
+
+                    <label for="mechanic-shop">Mechanic Shop Name:</label>
+                    <input type="text" id="mechanic-shop" name="mechanic-shop" required><br><br>
+
+                    <button type="submit">Confirm Order</button>
+                    <div id="loading-spinner" class="spinner" style="display: none;">Processing...</div>
+                </form>
+            </div>
+
+            <!-- Order Confirmation Message -->
+            <div id="order-confirmation" style="display: none;">
+                <h3>Order Placed Successfully!</h3>
+                <p>Thank you for shopping with us.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Firebase Compat SDK Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/11.4.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore-compat.js"></script>
+
+    <!-- Firebase Configuration and Initialization -->
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyCY6AIWSCkzedwYzyZpZZoALSg2aFNNZFo",
+            authDomain: "sparepartsvijayawada.firebaseapp.com",
+            projectId: "sparepartsvijayawada",
+            storageBucket: "sparepartsvijayawada.firebasestorage.app",
+            messagingSenderId: "684284121425",
+            appId: "1:684284121425:web:ecaa7cc0695255225e0370",
+            measurementId: "G-FCHBDN3SDC"
+        };
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <!-- Load script.js -->
+    <script src="script.js"></script>
+</body>
+</html>
